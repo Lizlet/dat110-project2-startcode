@@ -67,7 +67,15 @@ public class Storage {
 
 		// TODO: remove client session for user from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (clients.containsKey(user)) {
+			clients.remove(user);
+		} else {
+			System.err.println("Broker Storage: Tried to remove user \"" + user + "\" but user does not exist.");
+		}
+		
+		//====================================================================
 		
 	}
 

@@ -1,10 +1,10 @@
 package no.hvl.dat110.broker;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import no.hvl.dat110.common.TODO;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.messagetransport.Connection;
 
@@ -52,48 +52,103 @@ public class Storage {
 
 	public void addClientSession(String user, Connection connection) {
 
-		// TODO: add corresponding client session to the storage
+		// COMPLETED: add corresponding client session to the storage
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
 		
+		if (!clients.containsKey(user)) {
+			ClientSession clientSession = new ClientSession(user, connection);
+			clients.put(user, clientSession);
+		} else {
+			
+			Logger.log("Broker Storage: Tried to add user \"" + user + "\", but user already exists.");
+		}
+			
+		//====================================================================
 	}
 
 	public void removeClientSession(String user) {
 
-		// TODO: remove client session for user from the storage
+		// COMPLETED: remove client session for user from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (clients.containsKey(user)) {
+			clients.remove(user);
+		} else {
+			Logger.log("Broker Storage: Tried to remove user \"" + user + "\", but user does not exist.");
+		}
+		
+		//====================================================================
 		
 	}
 
 	public void createTopic(String topic) {
 
-		// TODO: create topic in the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-	
+		// COMPLETED: create topic in the storage
+		
+		//====================================================================
+		
+		if (!subscriptions.containsKey(topic)) {
+			subscriptions.put(topic, new HashSet<>());
+		} else {
+			Logger.log("Broker Storage: Tried to add topic \"" + topic + "\", but topic already exists.");
+		}
+		
+		//====================================================================
 	}
 
 	public void deleteTopic(String topic) {
 
-		// TODO: delete topic from the storage
+		// COMPLETED: delete topic from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (subscriptions.containsKey(topic)) {
+			subscriptions.remove(topic);
+		} else {
+			Logger.log("Broker Storage: Tried to remove topic \"" + topic + "\", but topic does not exists.");
+		}
+		
+		//====================================================================
 		
 	}
 
 	public void addSubscriber(String user, String topic) {
 
-		// TODO: add the user as subscriber to the topic
+		// COMPLETED: add the user as subscriber to the topic
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
 		
+		if (subscriptions.containsKey(topic)) {
+			if (subscriptions.get(topic).contains(user)) {
+				subscriptions.get(topic).add(user);
+			} else {
+				Logger.log("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the user is already subscribed.");
+			}
+		} else {
+			Logger.log("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the topic does not exist.");
+		}
+		
+		//====================================================================
 	}
 
 	public void removeSubscriber(String user, String topic) {
 
-		// TODO: remove the user as subscriber to the topic
+		// COMPLETED: remove the user as subscriber to the topic
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (subscriptions.containsKey(topic)) {
+			if (subscriptions.get(topic).contains(user)) {
+				subscriptions.get(topic).remove(user);
+			} else {
+				Logger.log("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the user is not subscribed.");
+			}
+		} else {
+			Logger.log("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the topic does not exist.");
+		}
+		
+		//====================================================================
 	}
 }

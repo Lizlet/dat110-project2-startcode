@@ -1,7 +1,5 @@
 package no.hvl.dat110.messages;
 
-import sun.jvm.hotspot.opto.MachReturnNode;
-
 public class DeleteTopicMsg extends Message {
 
 	// message sent from client to create topic on the broker

@@ -71,7 +71,7 @@ public class Storage {
 
 	public void removeClientSession(String user) {
 
-		// TODO: remove client session for user from the storage
+		// COMPLETED: remove client session for user from the storage
 
 		//====================================================================
 		
@@ -87,7 +87,7 @@ public class Storage {
 
 	public void createTopic(String topic) {
 
-		// TODO: create topic in the storage
+		// COMPLETED: create topic in the storage
 		
 		//====================================================================
 		
@@ -103,7 +103,7 @@ public class Storage {
 
 	public void deleteTopic(String topic) {
 
-		// TODO: delete topic from the storage
+		// COMPLETED: delete topic from the storage
 
 		//====================================================================
 		
@@ -119,7 +119,7 @@ public class Storage {
 
 	public void addSubscriber(String user, String topic) {
 
-		// TODO: add the user as subscriber to the topic
+		// COMPLETED: add the user as subscriber to the topic
 		
 		//====================================================================
 		

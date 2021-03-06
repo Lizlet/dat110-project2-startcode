@@ -63,7 +63,7 @@ public class Storage {
 			clients.put(user, clientSession);
 		} else {
 			
-			System.err.println("Broker Storage: Tried to add user \"" + user + "\" but user already exists.");
+			System.err.println("Broker Storage: Tried to add user \"" + user + "\", but user already exists.");
 		}
 			
 		//====================================================================
@@ -78,7 +78,7 @@ public class Storage {
 		if (clients.containsKey(user)) {
 			clients.remove(user);
 		} else {
-			System.err.println("Broker Storage: Tried to remove user \"" + user + "\" but user does not exist.");
+			System.err.println("Broker Storage: Tried to remove user \"" + user + "\", but user does not exist.");
 		}
 		
 		//====================================================================
@@ -95,7 +95,7 @@ public class Storage {
 			Set<String> subscriberSet = new HashSet<>();
 			subscriptions.put(topic, subscriberSet);
 		} else {
-			System.err.println("Broker Storage: Tried to add topic \"" + topic + "\" but topic already exists.");
+			System.err.println("Broker Storage: Tried to add topic \"" + topic + "\", but topic already exists.");
 		}
 		
 		//====================================================================
@@ -110,7 +110,7 @@ public class Storage {
 		if (subscriptions.containsKey(topic)) {
 			subscriptions.remove(topic);
 		} else {
-			System.err.println("Broker Storage: Tried to remove topic \"" + topic + "\" but topic does not exists.");
+			System.err.println("Broker Storage: Tried to remove topic \"" + topic + "\", but topic does not exists.");
 		}
 		
 		//====================================================================

@@ -121,8 +121,19 @@ public class Storage {
 
 		// TODO: add the user as subscriber to the topic
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
 		
+		if (subscriptions.containsKey(topic)) {
+			if (subscriptions.get(topic).contains(user)) {
+				subscriptions.get(topic).add(user);
+			} else {
+				System.err.println("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the user is already subscribed.");
+			}
+		} else {
+			System.err.println("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the topic does not exist.");
+		}
+		
+		//====================================================================
 	}
 
 	public void removeSubscriber(String user, String topic) {

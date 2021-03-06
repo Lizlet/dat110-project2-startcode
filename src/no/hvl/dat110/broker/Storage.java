@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import no.hvl.dat110.common.TODO;
-import no.hvl.dat110.messages.MessageType;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.messagetransport.Connection;
 
@@ -92,8 +90,7 @@ public class Storage {
 		//====================================================================
 		
 		if (!subscriptions.containsKey(topic)) {
-			Set<String> subscriberSet = new HashSet<>();
-			subscriptions.put(topic, subscriberSet);
+			subscriptions.put(topic, new HashSet<>());
 		} else {
 			Logger.log("Broker Storage: Tried to add topic \"" + topic + "\", but topic already exists.");
 		}

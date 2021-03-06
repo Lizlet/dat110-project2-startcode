@@ -1,6 +1,7 @@
 package no.hvl.dat110.broker;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -87,16 +88,32 @@ public class Storage {
 	public void createTopic(String topic) {
 
 		// TODO: create topic in the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-	
+		
+		//====================================================================
+		
+		if (!subscriptions.containsKey(topic)) {
+			Set<String> subscriberSet = new HashSet<>();
+			subscriptions.put(topic, subscriberSet);
+		} else {
+			System.err.println("Broker Storage: Tried to add topic \"" + topic + "\" but topic already exists.");
+		}
+		
+		//====================================================================
 	}
 
 	public void deleteTopic(String topic) {
 
 		// TODO: delete topic from the storage
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (subscriptions.containsKey(topic)) {
+			subscriptions.remove(topic);
+		} else {
+			System.err.println("Broker Storage: Tried to remove topic \"" + topic + "\" but topic does not exists.");
+		}
+		
+		//====================================================================
 		
 	}
 

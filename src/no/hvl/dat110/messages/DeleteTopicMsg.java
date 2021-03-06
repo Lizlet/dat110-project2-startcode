@@ -4,7 +4,7 @@ public class DeleteTopicMsg extends Message {
 
 	// message sent from client to create topic on the broker
 
-	// TODO:
+	// COMPLETED:
 	// Implement object variables - a topic is required
 
 	// Constructor, get/set-methods, and toString method

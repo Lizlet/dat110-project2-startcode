@@ -57,11 +57,12 @@ public class Storage {
 		
 		//====================================================================
 		
-		if (clients.containsKey(user)) {
-			System.err.println("Broker Storage: Tried to add user \"" + user + "\" but user already exists.");
-		} else {
+		if (!clients.containsKey(user)) {
 			ClientSession clientSession = new ClientSession(user, connection);
 			clients.put(user, clientSession);
+		} else {
+			
+			System.err.println("Broker Storage: Tried to add user \"" + user + "\" but user already exists.");
 		}
 			
 		//====================================================================

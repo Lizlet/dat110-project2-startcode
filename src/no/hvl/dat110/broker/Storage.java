@@ -138,8 +138,20 @@ public class Storage {
 
 	public void removeSubscriber(String user, String topic) {
 
-		// TODO: remove the user as subscriber to the topic
+		// COMPLETED: remove the user as subscriber to the topic
 
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
+		
+		if (subscriptions.containsKey(topic)) {
+			if (subscriptions.get(topic).contains(user)) {
+				subscriptions.get(topic).remove(user);
+			} else {
+				System.err.println("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the user is not subscribed.");
+			}
+		} else {
+			System.err.println("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the topic does not exist.");
+		}
+		
+		//====================================================================
 	}
 }

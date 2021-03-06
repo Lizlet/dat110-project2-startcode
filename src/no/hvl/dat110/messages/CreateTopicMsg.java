@@ -14,19 +14,19 @@ public class CreateTopicMsg extends Message {
 	
 	//====================================================================
 	
-	private String topicString;
+	private String topic;
 	
-	public CreateTopicMsg(String userString, String topicString) {
-		super(MessageType.CREATETOPIC, userString);
-		this.topicString = topicString;
+	public CreateTopicMsg(String user, String topic) {
+		super(MessageType.CREATETOPIC, user);
+		this.topic = topic;
 	}
 	
 	public String getTopic() {
-		return this.topicString;
+		return this.topic;
 	}
 	
 	public String toString() {
-		return String.format("Message [type=%s, user=%s, topic=%s]", this.getType(), this.getUser(), this.topicString);
+		return String.format("Message [type=%s, user=%s, topic=%s]", this.getType(), this.getUser(), this.topic);
 	}
 	
 	//====================================================================

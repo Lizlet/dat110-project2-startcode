@@ -63,7 +63,7 @@ public class Storage {
 			clients.put(user, clientSession);
 		} else {
 			
-			System.err.println("Broker Storage: Tried to add user \"" + user + "\", but user already exists.");
+			Logger.log("Broker Storage: Tried to add user \"" + user + "\", but user already exists.");
 		}
 			
 		//====================================================================
@@ -78,7 +78,7 @@ public class Storage {
 		if (clients.containsKey(user)) {
 			clients.remove(user);
 		} else {
-			System.err.println("Broker Storage: Tried to remove user \"" + user + "\", but user does not exist.");
+			Logger.log("Broker Storage: Tried to remove user \"" + user + "\", but user does not exist.");
 		}
 		
 		//====================================================================
@@ -95,7 +95,7 @@ public class Storage {
 			Set<String> subscriberSet = new HashSet<>();
 			subscriptions.put(topic, subscriberSet);
 		} else {
-			System.err.println("Broker Storage: Tried to add topic \"" + topic + "\", but topic already exists.");
+			Logger.log("Broker Storage: Tried to add topic \"" + topic + "\", but topic already exists.");
 		}
 		
 		//====================================================================
@@ -110,7 +110,7 @@ public class Storage {
 		if (subscriptions.containsKey(topic)) {
 			subscriptions.remove(topic);
 		} else {
-			System.err.println("Broker Storage: Tried to remove topic \"" + topic + "\", but topic does not exists.");
+			Logger.log("Broker Storage: Tried to remove topic \"" + topic + "\", but topic does not exists.");
 		}
 		
 		//====================================================================
@@ -127,10 +127,10 @@ public class Storage {
 			if (subscriptions.get(topic).contains(user)) {
 				subscriptions.get(topic).add(user);
 			} else {
-				System.err.println("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the user is already subscribed.");
+				Logger.log("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the user is already subscribed.");
 			}
 		} else {
-			System.err.println("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the topic does not exist.");
+			Logger.log("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the topic does not exist.");
 		}
 		
 		//====================================================================
@@ -146,10 +146,10 @@ public class Storage {
 			if (subscriptions.get(topic).contains(user)) {
 				subscriptions.get(topic).remove(user);
 			} else {
-				System.err.println("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the user is not subscribed.");
+				Logger.log("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the user is not subscribed.");
 			}
 		} else {
-			System.err.println("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the topic does not exist.");
+			Logger.log("User \"" + user + "\" tried to unsubscribe from topic \"" + topic + "\", but the topic does not exist.");
 		}
 		
 		//====================================================================

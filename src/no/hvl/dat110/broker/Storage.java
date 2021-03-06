@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import no.hvl.dat110.common.TODO;
+import no.hvl.dat110.messages.MessageType;
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.messagetransport.Connection;
 
@@ -52,10 +53,14 @@ public class Storage {
 
 	public void addClientSession(String user, Connection connection) {
 
-		// TODO: add corresponding client session to the storage
+		// COMPLETED: add corresponding client session to the storage
 		
-		throw new UnsupportedOperationException(TODO.method());
+		//====================================================================
 		
+		ClientSession clientSession = new ClientSession(user, connection);
+		clients.put(user, clientSession);
+			
+		//====================================================================
 	}
 
 	public void removeClientSession(String user) {

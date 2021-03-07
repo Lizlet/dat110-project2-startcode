@@ -38,7 +38,7 @@ public class DisplayDevice {
 			
 			if (msg.getType() == MessageType.PUBLISH) {
 				PublishMsg pblMsg = (PublishMsg) msg;
-				System.out.println(pblMsg);
+				System.out.println(String.format("DISPLAY: %s", pblMsg.getMessage()));
 			}
 		}
 		

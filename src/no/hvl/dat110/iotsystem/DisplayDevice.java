@@ -2,8 +2,8 @@ package no.hvl.dat110.iotsystem;
 
 import no.hvl.dat110.client.Client;
 import no.hvl.dat110.messages.Message;
+import no.hvl.dat110.messages.MessageType;
 import no.hvl.dat110.messages.PublishMsg;
-import no.hvl.dat110.common.TODO;
 
 public class DisplayDevice {
 	
@@ -13,7 +13,7 @@ public class DisplayDevice {
 		
 		System.out.println("Display starting ...");
 		
-		// TODO - START
+		// COMPLETED - START
 				
 		// create a client object and use it to
 		
@@ -24,11 +24,29 @@ public class DisplayDevice {
 		// - unsubscribe from the topic
 		// - disconnect from the broker
 		
-		// TODO - END
+		// COMPLETED - END
+		
+		//====================================================================
+		
+		Client client = new Client("User A", Common.BROKERHOST, Common.BROKERPORT);
+		client.connect();
+		client.createTopic(Common.TEMPTOPIC);
+		client.subscribe(Common.TEMPTOPIC);
+		
+		for (int i=0; i<COUNT; i++) {
+			Message msg = client.receive();
+			
+			if (msg.getType() == MessageType.PUBLISH) {
+				PublishMsg pblMsg = (PublishMsg) msg;
+				System.out.println(pblMsg);
+			}
+		}
+		
+		client.unsubscribe(Common.TEMPTOPIC);
+		client.disconnect();
+		
+		//====================================================================
 		
 		System.out.println("Display stopping ... ");
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
 	}
 }

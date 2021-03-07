@@ -121,7 +121,7 @@ public class Storage {
 		//====================================================================
 		
 		if (subscriptions.containsKey(topic)) {
-			if (subscriptions.get(topic).contains(user)) {
+			if (!subscriptions.get(topic).contains(user)) {
 				subscriptions.get(topic).add(user);
 			} else {
 				Logger.log("User \"" + user + "\" tried to subscribe to topic \"" + topic + "\", but the user is already subscribed.");
